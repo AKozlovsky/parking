@@ -1,0 +1,13 @@
+<div *ngIf="!!dataSource.data.length">
+  <app-table
+    #table
+    [dataSource]="dataSource"
+    [displayedColumns]="displayedColumns"
+    [translate]="translate"
+  ></app-table>
+</div>
+<div *ngIf="!dataSource.data.length">
+  <mat-card>
+    {{ "PLACES.NO_DATA" | translate }}
+  </mat-card>
+</div>

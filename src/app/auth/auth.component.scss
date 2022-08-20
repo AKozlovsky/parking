@@ -1,0 +1,45 @@
+@import "~@angular/material/theming";
+
+.flex {
+  background-color: mat-color($mat-grey, 100);
+}
+
+p {
+  margin: 0px;
+}
+
+.container {
+  width: 300px;
+}
+
+mat-card-title {
+  margin-bottom: 10px;
+}
+
+mat-card-subtitle {
+  margin-bottom: 10px;
+  color: mat-color($mat-red, A700);
+}
+
+mat-card-content {
+  margin: 0px;
+}
+
+mat-card-actions {
+  margin: 0px;
+  padding: 0px;
+}
+
+.title {
+  margin: 0 24px 10px 24px;
+  font-size: 24px;
+}
+
+.progress-bar {
+  height: 4px;
+}
+
+mat-progress-bar {
+  border-radius: 10px;
+  height: 10px;
+}

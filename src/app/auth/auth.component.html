@@ -1,0 +1,86 @@
+<common-sidenav
+  #sidenav
+  [navigationApplication]="navigationApplication"
+  [navigationModules]="navigationModules"
+  [translate]="translate"
+>
+  <common-toolbar
+    #toolbar
+    [navigationApplication]="navigationApplication"
+    [navigationModules]="navigationModules"
+    [progressBarColor]="progressBarColor"
+    [showMenuBtn]="true"
+    [showProgressBar]="showProgressBar"
+    [title]="appTitle"
+    [translate]="translate"
+    [isAdmin]="isAdmin"
+    (login)="login()"
+    (logout)="logout()"
+    (sidenavBtnClick)="sidenav.open()"
+  ></common-toolbar>
+
+  <div fxLayout="row" align="center" style="margin-top: 15px">
+    <div fxFlex="10" fxShow="false" fxShow.gt-sm></div>
+    <div fxFlex.lt-md="100" fxFlex.gt-sm="80">
+      <div class="title">
+        <img src="../../assets/images/icon.png" />&nbsp;{{ appTitle }}
+      </div>
+      <div class="progress-bar">
+        <mat-progress-bar
+          *ngIf="progressBarOn"
+          mode="indeterminate"
+        ></mat-progress-bar>
+      </div>
+      <mat-card>
+        <mat-card-title>{{ "AUTH.TITLE" | translate }}</mat-card-title>
+        <mat-card-subtitle *ngIf="showMessage">{{
+          message | translate
+        }}</mat-card-subtitle>
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+          <mat-card-content>
+            <p>
+              <mat-form-field hideRequiredMarker="true">
+                <input
+                  matInput
+                  required
+                  name="username"
+                  [(ngModel)]="credentials.username"
+                  [disabled]="progressBarOn"
+                  [placeholder]="'AUTH.USERNAME' | translate"
+                />
+                <mat-error>{{
+                  "AUTH.REQUIRED_USERNAME" | translate
+                }}</mat-error>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field hideRequiredMarker="true">
+                <input
+                  matInput
+                  required
+                  type="password"
+                  name="password"
+                  [(ngModel)]="credentials.password"
+                  [disabled]="progressBarOn"
+                  [placeholder]="'AUTH.PASSWORD' | translate"
+                />
+                <mat-error>{{
+                  "AUTH.REQUIRED_PASSWORD" | translate
+                }}</mat-error>
+              </mat-form-field>
+            </p>
+          </mat-card-content>
+          <mat-card-actions align="center">
+            <button
+              mat-raised-button
+              type="submit"
+              [disabled]="!loginForm.form.valid || progressBarOn"
+            >
+              {{ "AUTH.LOGIN" | translate }}
+            </button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</common-sidenav>

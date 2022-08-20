@@ -1,0 +1,121 @@
+<common-sidenav
+  #sidenav
+  [isAdmin]="isAdmin"
+  [navigationApplication]="navigationApplication"
+  [navigationModules]="navigationModules"
+  [profileName]="profileName"
+  [translate]="translate"
+  [user]="user"
+  (logout)="logout()"
+>
+  <common-toolbar
+    #toolbar
+    [isAdmin]="isAdmin"
+    [navigationApplication]="navigationApplication"
+    [navigationModules]="navigationModules"
+    [profileName]="profileName"
+    [progressBarColor]="progressBarColor"
+    [showMenuBtn]="true"
+    [showProgressBar]="showProgressBar"
+    [title]="appTitle"
+    [translate]="translate"
+    (login)="login()"
+    (logout)="logout()"
+    (sidenavBtnClick)="sidenav.open()"
+  ></common-toolbar>
+
+  <div fxLayout="row">
+    <div fxFlex="10" fxShow="false" fxShow.gt-sm></div>
+    <div fxFlex.lt-md="100" fxFlex.gt-sm="80">
+      <mat-card>
+        <mat-card-title>{{ "VACATION.TITLE" | translate }}</mat-card-title>
+        <mat-card-subtitle *ngIf="message.length">{{
+          tran(message)
+        }}</mat-card-subtitle>
+        <form
+          *ngIf="vacationForm"
+          [formGroup]="vacationForm"
+          (ngSubmit)="submit(vacationForm.value)"
+        >
+          <mat-card-content>
+            <p>
+              <mat-form-field>
+                <mat-label>{{ "VACATION.PARK_NUMBER" | translate }}</mat-label>
+                <mat-select
+                  *ngIf="!selectedOption"
+                  formControlName="parkNumber"
+                >
+                  <mat-option
+                    *ngFor="let option of parkNumberOptions"
+                    [value]="option.name"
+                  >
+                    {{ option.value }}
+                  </mat-option>
+                </mat-select>
+                <mat-select
+                  *ngIf="selectedOption"
+                  formControlName="parkNumber"
+                  [(ngModel)]="selected.value"
+                  [disabled]="true"
+                >
+                  <mat-option [value]="selectedParkNumber">
+                    {{ selectedParkNumber }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field>
+                <mat-label>Začátek dovolené</mat-label>
+                <input
+                  matInput
+                  [ngxMatDatetimePicker]="picker1"
+                  placeholder="Výběr data"
+                  formControlName="startDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker1"
+                ></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker1 [showSpinners]="true">
+                  <ng-template>
+                    <mat-icon>star</mat-icon>
+                  </ng-template>
+                </ngx-mat-datetime-picker>
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-form-field>
+                <mat-label>Konec dovolené</mat-label>
+                <input
+                  matInput
+                  [ngxMatDatetimePicker]="picker2"
+                  placeholder="Výběr data"
+                  formControlName="endDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker2"
+                ></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker2 [showSpinners]="true">
+                  <ng-template>
+                    <mat-icon>star</mat-icon>
+                  </ng-template>
+                </ngx-mat-datetime-picker>
+              </mat-form-field>
+            </p>
+            <p>
+              <button
+                mat-raised-button
+                type="submit"
+                [disabled]="!vacationForm.valid"
+              >
+                {{ "VACATION.BUTTON" | translate }}
+              </button>
+            </p>
+          </mat-card-content>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</common-sidenav>

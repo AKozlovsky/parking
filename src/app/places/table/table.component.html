@@ -1,0 +1,86 @@
+<common-filter [dataSource]="dataSource"></common-filter>
+
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="park_number">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+      "PLACES.ID" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let data">{{ data.park_number }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="first_name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+      "PLACES.FIRST_NAME" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let data">{{ data.first_name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="last_name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+      "PLACES.LAST_NAME" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let data">{{ data.last_name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="vacation_start">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+      "PLACES.VACATION_START" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let data">{{
+      data.vacation_start | date: "d.M.y HH:mm:ss"
+    }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="vacation_end">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+      "PLACES.VACATION_END" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let data">{{
+      data.vacation_end | date: "d.M.y HH:mm:ss"
+    }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="occupancy_status">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+      "PLACES.OCCUPANCY_STATUS" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let data">
+      <p *ngIf="!data.occupancy_status">
+        <i
+          class="fa fa-2x fa-check"
+          aria-hidden="true"
+          style="color: #5cb85c"
+        ></i>
+      </p>
+      <p *ngIf="data.occupancy_status">
+        <i
+          class="fa fa-2x fa-times"
+          aria-hidden="true"
+          style="color: #d9534f"
+        ></i>
+      </p>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action" *ngIf="isAdmin">
+    <mat-header-cell *matHeaderCellDef>{{
+      "PLACES.ACTION" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let data">
+      <button mat-raised-button (click)="goToVacation(data.park_number)">
+        {{ "PLACES.BUTTON_VACATION" | translate }}
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator
+  [pageIndex]="pageIndex"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  showFirstLastButtons
+  (page)="page($event)"
+></mat-paginator>

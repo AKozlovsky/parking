@@ -1,0 +1,40 @@
+<common-sidenav
+  #sidenav
+  [isAdmin]="isAdmin"
+  [navigationApplication]="navigationApplication"
+  [navigationModules]="navigationModules"
+  [profileName]="profileName"
+  [translate]="translate"
+  [user]="user"
+  (logout)="logout()"
+>
+  <common-toolbar
+    #toolbar
+    [isAdmin]="isAdmin"
+    [navigationApplication]="navigationApplication"
+    [navigationModules]="navigationModules"
+    [profileName]="profileName"
+    [progressBarColor]="progressBarColor"
+    [showMenuBtn]="true"
+    [showProgressBar]="showProgressBar"
+    [title]="appTitle"
+    [translate]="translate"
+    (login)="login()"
+    (logout)="logout()"
+    (sidenavBtnClick)="sidenav.open()"
+  ></common-toolbar>
+
+  <div fxLayout="row">
+    <div fxFlex="10" fxShow="false" fxShow.gt-sm></div>
+    <div fxFlex.lt-md="100" fxFlex.gt-sm="80">
+      <mat-tab-group>
+        <mat-tab [label]="'APP.ACTUAL' | translate"
+          ><app-places-actual></app-places-actual>
+        </mat-tab>
+        <mat-tab [label]="'APP.TOMORROW' | translate"
+          ><app-places-tomorrow></app-places-tomorrow>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</common-sidenav>

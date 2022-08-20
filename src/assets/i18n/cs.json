@@ -1,0 +1,48 @@
+{
+  "cs": "Čeština",
+  "en": "English",
+  "APP": {
+    "TITLE": "Parking",
+    "FILTER": "Filtr",
+    "ABOUT": "O aplikaci",
+    "ACTUAL": "Aktuální",
+    "TOMORROW": "Zítra"
+  },
+  "AUTH": {
+    "TITLE": "Přihlášení",
+    "USERNAME": "Uživatelské jméno",
+    "REQUIRED_USERNAME": "Zadejte uživatelské jméno",
+    "PASSWORD": "Heslo",
+    "REQUIRED_PASSWORD": "Zadejte heslo",
+    "LOGIN": "Přihlásit",
+    "LOGOUT": "Odhlásit se",
+    "BAD_LOGIN": "Chyba přihlášení. Zkuste to znovu.",
+    "LOGIN_EXPIRED": "Přihlášení vypršelo."
+  },
+  "PARKING_SCHEMA": {
+    "TITLE": "Mapa parkovacích míst",
+    "LEGEND_TITLE": "LEGENDA",
+    "FREE": "Volno",
+    "OCCUPIED": "Obsazeno"
+  },
+  "PLACES": {
+    "TITLE": "Přehled parkovacích míst",
+    "NO_DATA": "Nebyly nalezeny žádné záznamy",
+    "ID": "Parkovací číslo",
+    "FIRST_NAME": "Jméno",
+    "LAST_NAME": "Příjmení",
+    "VACATION_START": "Začátek dovolené",
+    "VACATION_END": "Konec dovolené",
+    "OCCUPANCY_STATUS": "Stav obsazenosti",
+    "YES": "Ano",
+    "NO": "Ne",
+    "ACTION": "Akce",
+    "BUTTON_VACATION": "Vybrat dovolenou"
+  },
+  "VACATION": {
+    "NAV_TITLE": "Dovolená",
+    "TITLE": "Výběr dovolené",
+    "PARK_NUMBER": "Parkovací číslo",
+    "BUTTON": "Zadat"
+  }
+}
